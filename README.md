@@ -1,0 +1,2 @@
+# namaste-gpt
+NamasteReact project
