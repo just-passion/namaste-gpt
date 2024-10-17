@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
+import { auth } from "../utils/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -23,7 +25,46 @@ const Login = () => {
     setErrorMessage(errorMessage);
 
     //Proceed to sign in or sign up if data valid
-    
+    if (errorMessage) {
+      return;
+    }
+
+    //then sign in or sign up
+    if (!isSignInForm) {
+      //SignUp logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log({ user: user });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      //Sign In logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log({user: user})
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   return (
@@ -62,7 +103,7 @@ const Login = () => {
         />
         <input
           ref={password}
-          type="text"
+          type="password"
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700"
         />
