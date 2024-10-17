@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -11,6 +15,8 @@ const Login = () => {
   //useRef Hook
   const email = useRef(null);
   const password = useRef(null);
+
+  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
@@ -41,6 +47,7 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           console.log({ user: user });
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -57,7 +64,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log({user: user})
+          console.log({ user: user });
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
