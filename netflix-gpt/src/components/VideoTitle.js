@@ -29,17 +29,17 @@ const VideoTitle = ({ title, overview }) => {
               cy="12"
               r="10"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
             />
             <text
               x="12"
               y="16"
-              text-anchor="middle"
-              font-size="12"
+              textAnchor="middle"
+              fontSize="12"
               fill="currentColor"
-              font-family="Arial"
-              font-weight="bold"
+              fontFamily="Arial"
+              fontWeight="bold"
             >
               i
             </text>
