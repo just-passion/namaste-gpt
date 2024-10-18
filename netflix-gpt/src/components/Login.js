@@ -9,6 +9,7 @@ import { auth } from "../utils/firebase";
 import { addUser } from "../utils/userSlice";
 import { checkValidData } from "../utils/validate";
 import Header from "./Header";
+import { NETFLIX_BG, PHOTO_URL } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
@@ -51,10 +52,10 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://shorturl.at/pouaC",
+            photoURL: PHOTO_URL,
           })
             .then(() => {
-              // Profile updated!
+              // Profile updated! 
               const { uid, email, displayName, photoURL } = auth.currentUser; //get the latest user so take from auth
               dispatch(
                 addUser({
@@ -99,8 +100,8 @@ const Login = () => {
       <Header />
       <div className="absolute w-full h-full">
         <img
-          src="https://shorturl.at/BleJW"
-          alt=""
+          src={NETFLIX_BG}
+          alt="netflix-background"
           className="object-cover w-full h-full"
         />
       </div>
