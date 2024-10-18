@@ -1,21 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { addUser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const userInfo = useSelector((store) => store.user);
-  console.log({userInfoHeader: userInfo})
+
+  //want to call only once after render (to add or remove user to redux store)
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, []);
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
         //dispatch will happen on it's own as we r using onAuthStatechange API of firebase
-        navigate("/");
+        //no need to navigate here as event listener present
       })
       .catch((error) => {
         // An error happened.
