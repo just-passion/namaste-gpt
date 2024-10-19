@@ -55,7 +55,7 @@ const Login = () => {
             photoURL: PHOTO_URL,
           })
             .then(() => {
-              // Profile updated! 
+              // Profile updated!
               const { uid, email, displayName, photoURL } = auth.currentUser; //get the latest user so take from auth
               dispatch(
                 addUser({
@@ -105,7 +105,6 @@ const Login = () => {
           className="object-cover w-full h-full"
         />
       </div>
-      {/* onSubmit={(e)=>e.preventDefault() */}
       <form
         action=""
         className="w-3/12 absolute p-12 bg-black my-20 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 md:w-5/12 lg:w-3/12"
@@ -115,7 +114,6 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
-        {/* conditional rendering */}
         {!isSignInForm && (
           <>
             <input
@@ -144,7 +142,8 @@ const Login = () => {
 
         <button
           className="p-4 my-6 bg-red-700 w-full rounded-lg"
-          onClick={handleButtonClick}>
+          onClick={handleButtonClick}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>

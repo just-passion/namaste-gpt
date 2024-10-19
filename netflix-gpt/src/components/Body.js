@@ -3,9 +3,6 @@ import Login from "./Login";
 import Browse from "./Browse";
 
 const Body = () => {
-  //cannot use navigate here
-  // const navigate = useNavigate();
-
   const appRouter = createBrowserRouter([
     {
       path: "/",

@@ -16,7 +16,6 @@ const Header = () => {
   const userInfo = useSelector((store) => store.user);
   const isShowGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-  //want to call only once after render (to add or remove user to redux store)
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -45,14 +44,8 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        //dispatch will happen on it's own as we r using onAuthStatechange API of firebase
-        //no need to navigate here as event listener present
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+      .then(() => {})
+      .catch((error) => {});
   };
 
   const handleLanguageChange = (e) => {
@@ -60,7 +53,7 @@ const Header = () => {
   };
 
   const handleGptSearchClick = () => {
-    dispatch(toggleGptSearchView()); //no need to pass anything
+    dispatch(toggleGptSearchView());
   };
 
   return (
