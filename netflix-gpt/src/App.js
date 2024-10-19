@@ -1,15 +1,15 @@
- import { Provider } from "react-redux";
+import { Provider } from "react-redux";
 import Body from "./components/Body";
 import appStore from "./utils/appStore";
 
 function App() {
   return (
-    //provide the redux store
-    <Provider store={appStore}> 
-      <Body/>
-    </Provider>
-
-
+    <div className="w-screen box-border">
+      {/* provide the redux store */}
+      <Provider store={appStore}>
+        <Body />
+      </Provider>
+    </div>
   );
 }
 

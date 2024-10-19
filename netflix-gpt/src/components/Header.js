@@ -56,9 +56,11 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
 
+  //md is desktop
+
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between">
-      <img src={NETFLIX_LOGO} alt="netflix-logo" className="w-44" />
+    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between flex-col md:flex-row">
+      <img src={NETFLIX_LOGO} alt="netflix-logo" className="w-44 mx-auto md:mx-0" />
       {userInfo && (
         <div className="flex items-center p-2">
           {isShowGptSearch && (
@@ -84,7 +86,7 @@ const Header = () => {
           <img
             src={userInfo?.photoURL}
             alt="user-icon"
-            className="w-10 h-10 mx-3"
+            className="hidden md:inline-block w-10 h-10 mx-3"
           />
           <button className="text-white font-bold" onClick={handleSignOut}>
             Sign Out

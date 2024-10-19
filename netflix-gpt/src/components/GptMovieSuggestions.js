@@ -9,7 +9,7 @@ const GptMovieSuggestions = () => {
   if (!tmdbResults) return null;
 
   return (
-    <div className="p-4 m-4 bg-black text-white opacity-90">
+    <div className="p-4 mt-3 m-0 w-full bg-black text-white bg-opacity-75">
       {gptSearchMovieNames?.map((movieName, index) => (
         <MovieList key={movieName} title={movieName} movies={tmdbResults[index]} />
       ))}

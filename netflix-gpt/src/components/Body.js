@@ -15,7 +15,7 @@ const Body = () => {
   ]);
 
   return (
-    <div>
+    <div className="w-screen m-0 p-0 box-border">
       <RouterProvider router={appRouter} />
     </div>
   );

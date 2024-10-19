@@ -102,12 +102,12 @@ const Login = () => {
         <img
           src={NETFLIX_BG}
           alt="netflix-background"
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-screen"
         />
       </div>
       <form
         action=""
-        className="w-3/12 absolute p-12 bg-black my-20 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 md:w-5/12 lg:w-3/12"
+        className="w-10/12 mt-40 md:w-3/12 absolute p-12 bg-black md:my-20 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80 md:w-5/12 lg:w-3/12"
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="font-bold text-3xl py-4">
