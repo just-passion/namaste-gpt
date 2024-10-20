@@ -30,7 +30,7 @@ const GptSearchBar = () => {
     // const gptMovieList = gptResults.choices[0]?.message?.content.split(",");
     ///////////////////////////////
 
-    const gptMovieList ="Gadar,Sholay,singham,chhapaak,Thappad".split(",");
+    const gptMovieList ="Chupke Chupke, Gol Maal, Chashme Buddoor, Padosan, Angoor".split(",");
 
     //in gptMovieList [Gadar, Sholay, Don, Stree2, Golmal]
     //for each movie I will search TMDB API
